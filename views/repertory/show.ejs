@@ -10,7 +10,7 @@
     <p>Author: <%= repertory.author %></p>
     <p>Genre: <%= repertory.genre %></p>
     <form action="/repertory/<%= repertory._id %>?_method=DELETE" method="POST">
-    <button type="submit">Delete <%= repertory.title%></button>
+    <button type="submit">Delete  <%= repertory.title%></button>
     </form>
     <p>
         <a href="/repertory/<%=repertory._id %>/edit">Edit <%= repertory.title %></a>
