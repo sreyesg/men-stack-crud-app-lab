@@ -8,19 +8,24 @@ const methodOverride = require('method-override')
 const app = express()
 // ===============Database Connections ============= //
 
-const db = mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI)
+const db = mongoose.connection
 db 
-    .on('connect',()=>{console.log(`connected to ${mongoose.connection.name}`)})
+    .on('connected',()=>{console.log(`connected to ${mongoose.connection.name}`)})
 
 // ===============Middleware ============= //
 
 app.use(express.urlencoded({extended: false}))
-app.use(morgan())
-
+app.use(methodOverride("_method"))
+app.use(morgan('dev'))
+const port = process.env.PORT || "3000"
 
 // ===============routes ============= //
 
-
+// home
+app.get('/', (req, res)=>{
+    res.render('index.ejs')
+})
 
 
 // ============== listener ============= //
