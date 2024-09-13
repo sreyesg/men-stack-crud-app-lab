@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
 
+
 const app = express()
 // ===============Database Connections ============= //
 
@@ -12,6 +13,10 @@ mongoose.connect(process.env.MONGODB_URI)
 const db = mongoose.connection
 db 
     .on('connected',()=>{console.log(`connected to ${mongoose.connection.name} Database`)})
+
+// Import model 
+const repertory = require('./model/repertory.js')
+
 
 // ===============Middleware ============= //
 
@@ -31,7 +36,10 @@ app.get('/', (req, res)=>{
 app.get('/repertory/new',(req, res) => {
     res.render('repertory/new.ejs')
 })
-// 
+// Handel New form
+app.post('/repertory', (req, res) => {
+    console.log(req.body)
+})
 
 
 
