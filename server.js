@@ -47,6 +47,12 @@ app.get('/repertory', async(req, res) => {
     const repertoryIndex = await Repertory.find()
     res.render('repertory/index.ejs', {repertory: repertoryIndex})
 })
+// handle show route    
+app.get('/repertory/:id', async(req, res) =>{
+    const findRepertory = await Repertory.findById(req.params.id)
+    res.render('repertory/show.ejs', {repertory: findRepertory})
+})
+
 
 // ============== listener ============= //
 app.listen(port)

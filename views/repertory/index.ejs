@@ -9,9 +9,9 @@
     <h1>Repertory Index</h1>
     <ul>
         <% repertory.forEach((song)=>{ %>
-            <li>Title: <%=song.title %></li>
-            <li>Author: <%=song.author %></li>
-            <li>Genre: <%=song.genre %></li>
+            <li><a href="/repertory/<%= song._id%> ">Title: <%=song.title %></a></li>
+            <!-- <li>Author: <%=song.author %></li>
+            <li>Genre: <%=song.genre %></li> -->
         <% }) %>
         
     </ul>
