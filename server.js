@@ -15,7 +15,7 @@ db
     .on('connected',()=>{console.log(`connected to ${mongoose.connection.name} Database`)})
 
 // Import model 
-const repertory = require('./model/repertory.js')
+const Repertory = require('./model/repertory.js')
 
 
 // ===============Middleware ============= //
@@ -32,13 +32,16 @@ app.get('/', (req, res)=>{
     res.render('index.ejs')
 })
 
-// new
+// send New Form
 app.get('/repertory/new',(req, res) => {
     res.render('repertory/new.ejs')
 })
-// Handel New form
-app.post('/repertory', (req, res) => {
-    console.log(req.body)
+// Handel create to database from New form
+app.post('/repertory', async(req, res) => {
+    const createRepertory = await Repertory.create(req.body)
+    console.log(createRepertory)
+    res.redirect('/repertory/new')
+
 })
 
 
