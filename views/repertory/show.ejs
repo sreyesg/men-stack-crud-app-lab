@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= repertory.title></title>
+    <title><%= repertory.title %></title>
 </head>
 <body>
-    <h1><%= repertory.title></h1>
+    <h1><%= repertory.title %></h1>
     <p>Author: <%= repertory.author %></p>
     <p>Genre: <%= repertory.genre %></p>
+    <form action="/repertory/<%= repertory._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete <%= repertory.title%></button>
+    </form>
 </body>
 </html>

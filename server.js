@@ -18,14 +18,14 @@ db
 const Repertory = require('./model/repertory.js')
 
 
-// ===============Middleware ============= //
+// =============== Middleware ======================= //
 
 app.use(express.urlencoded({extended: false}))
 app.use(methodOverride("_method"))
 app.use(morgan('dev'))
 const port = process.env.PORT || "3000"
 
-// ===============routes ============= //
+// =============== Routes ========================== //
 
 // home
 app.get('/', (req, res)=>{
@@ -53,6 +53,12 @@ app.get('/repertory/:id', async(req, res) =>{
     res.render('repertory/show.ejs', {repertory: findRepertory})
 })
 
+// handle delete route
+app.delete('/repertory/:id', async(req, res)=>{
+    console.log('REQUEST', req.params.id)
+    await Repertory.findByIdAndDelete(req.params.id)
+    res.redirect('/repertory')
+})
 
 // ============== listener ============= //
 app.listen(port)
