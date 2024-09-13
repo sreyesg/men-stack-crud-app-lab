@@ -7,5 +7,13 @@
 </head>
 <body>
     <h1>Repertory Index</h1>
+    <ul>
+        <% repertory.forEach((song)=>{ %>
+            <li>Title: <%=song.title %></li>
+            <li>Author: <%=song.author %></li>
+            <li>Genre: <%=song.genre %></li>
+        <% }) %>
+        
+    </ul>
 </body>
 </html>

@@ -39,12 +39,14 @@ app.get('/repertory/new',(req, res) => {
 // Handel create to database from New form
 app.post('/repertory', async(req, res) => {
     const createRepertory = await Repertory.create(req.body)
-    console.log(createRepertory)
     res.redirect('/repertory/new')
 
 })
-
-
+// handle index
+app.get('/repertory', async(req, res) => {
+    const repertoryIndex = await Repertory.find()
+    res.render('repertory/index.ejs', {repertory: repertoryIndex})
+})
 
 // ============== listener ============= //
 app.listen(port)
