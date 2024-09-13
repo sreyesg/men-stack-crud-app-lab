@@ -65,7 +65,11 @@ app.get('/repertory/:id/edit', async(req,res)=>{
     res.render('repertory/edit.ejs', {repertory: foundRepertory})
 })
 // handle the edit route
-app.put('/repertory/:id')
+app.put('/repertory/:id',async (req, res) => {
+    console.log(req.body)
+    await Repertory.findByIdAndUpdate(req.params.id, req.body)
+    res.redirect(`/repertory/${req.params.id}`)
+})
 
 // ============== listener ============= //
 app.listen(port)
