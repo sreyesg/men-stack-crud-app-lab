@@ -55,10 +55,17 @@ app.get('/repertory/:id', async(req, res) =>{
 
 // handle delete route
 app.delete('/repertory/:id', async(req, res)=>{
-    console.log('REQUEST', req.params.id)
     await Repertory.findByIdAndDelete(req.params.id)
     res.redirect('/repertory')
 })
+
+// send edit page based on id
+app.get('/repertory/:id/edit', async(req,res)=>{
+    const foundRepertory = await Repertory.findById(req.params.id)
+    res.render('repertory/edit.ejs', {repertory: foundRepertory})
+})
+// handle the edit route
+app.put('/repertory/:id')
 
 // ============== listener ============= //
 app.listen(port)
