@@ -9,5 +9,8 @@ const repertorySchema = new mongoose.Schema({
 
 // Add schema to Model
 
+const Repertory = mongoose.model('Repertory', repertorySchema)
 
 // export schema
+
+module.exports = Repertory
